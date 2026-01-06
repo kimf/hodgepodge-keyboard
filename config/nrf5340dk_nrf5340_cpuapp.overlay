@@ -2,16 +2,19 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 
-/* --- VIKTIGT: Stäng av konkurrerande hårdvara --- */
+/* Stäng av konkurrerande hårdvara för att frigöra SPI */
 &i2c1 { status = "disabled"; };
 &uart1 { status = "disabled"; };
-&qspi { status = "disabled"; }; /* Stäng av QSPI om det stör */
+&qspi { status = "disabled"; };
 
 / {
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        zmk,display = &st7789;
+
+        /* HÄR ÄR FIXEN: Vi måste definiera BÅDA dessa! */
+        zmk,display = &st7789;      /* För ZMK widgets */
+        zephyr,display = &st7789;   /* För drivrutinen (Löser ditt fel!) */
     };
 
     default_transform: keymap_transform_0 {
@@ -75,12 +78,11 @@
     status = "okay";
     pinctrl-0 = <&spi1_default>;
     pinctrl-1 = <&spi1_sleep>;
-    /* Chip Select definieras här för bussen */
     cs-gpios = <&gpio0 16 GPIO_ACTIVE_LOW>;
 
     st7789: st7789v@0 {
         compatible = "sitronix,st7789v";
-        status = "okay"; /* Dubbelkolla att denna är med! */
+        status = "okay";
         reg = <0>;
         spi-max-frequency = <20000000>;
         width = <240>;
