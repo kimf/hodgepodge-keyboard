@@ -2,7 +2,7 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 
-/* Stäng av konkurrerande hårdvara för att frigöra SPI */
+/* --- STÄNG AV KONFLIKTER --- */
 &i2c1 { status = "disabled"; };
 &uart1 { status = "disabled"; };
 &qspi { status = "disabled"; };
@@ -12,9 +12,9 @@
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
 
-        /* HÄR ÄR FIXEN: Vi måste definiera BÅDA dessa! */
-        zmk,display = &st7789;      /* För ZMK widgets */
-        zephyr,display = &st7789;   /* För drivrutinen (Löser ditt fel!) */
+        /* Båda måste finnas! */
+        zmk,display = &st7789;
+        zephyr,display = &st7789;
     };
 
     default_transform: keymap_transform_0 {
@@ -73,11 +73,28 @@
     };
 };
 
+/* --- PIN CONTROL DEFINITION --- */
+&pinctrl {
+    /* Vi skapar en EGEN profil för att inte krocka med kortets default */
+    spi1_custom_default: spi1_custom_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
+                    <NRF_PSEL(SPIM_MOSI, 0, 13)>,
+                    <NRF_PSEL(SPIM_MISO, 0, 255)>; /* 255 = Inte ansluten */
+        };
+    };
+};
+
+/* --- SPI & DISPLAY --- */
 &spi1 {
     compatible = "nordic,nrf-spim";
     status = "okay";
-    pinctrl-0 = <&spi1_default>;
-    pinctrl-1 = <&spi1_sleep>;
+
+    /* HÄR ÄR FIXEN FÖR FELET: */
+    pinctrl-0 = <&spi1_custom_default>; /* Peka på vår custom profil */
+    /delete-property/ pinctrl-1;        /* Ta bort sleep-läget för att undvika krångel */
+    pinctrl-names = "default";          /* Säg explicit att detta är default */
+
     cs-gpios = <&gpio0 16 GPIO_ACTIVE_LOW>;
 
     st7789: st7789v@0 {
@@ -111,19 +128,5 @@
 };
 
 &pinctrl {
-    spi1_default: spi1_default {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 13)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 255)>;
-        };
-    };
-    spi1_sleep: spi1_sleep {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 13)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 255)>;
-            low-power-enable;
-        };
-    };
+    /* (Tomma pinctrl-block här nere är okej, de mergas automatiskt) */
 };
