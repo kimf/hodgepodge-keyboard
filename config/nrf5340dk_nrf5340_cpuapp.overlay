@@ -84,11 +84,10 @@
         x-offset = <0>;
         y-offset = <0>;
 
-        /* HÄR ÄR ÄNDRINGEN: bytt namn från dc-gpios till cmd-data-gpios */
         cmd-data-gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
         reset-gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
 
-        /* Display Initiering (Hex-koderna vi lade till tidigare) */
+        /* Display Initiering */
         mdac = <0x00>;
         colmod = <0x55>;
         lcm = <0x2c>;
@@ -100,10 +99,10 @@
         ram-param = [00 F0];
         rgb-param = [CD 08 14];
 
-        /* Ström, Spänning & Gamma */
+        /* Ström & Gamma */
         gctrl = <0x35>;
         vcom = <0x19>;
-        vds = <0x20>;
+        /* vds är borttagen! */
         vrh = <0x12>;
         vdv = <0x20>;
         gamma = <0x01>;
