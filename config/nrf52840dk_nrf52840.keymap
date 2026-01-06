@@ -1,3 +1,4 @@
+/* config/nrf52840dk_nrf52840.keymap */
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
@@ -7,17 +8,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            bindings = <
-    /* Placeholder bindings for unbuilt keys */
-    &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A
-    &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A
-    &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A
-
-    /* Macro 1 (H), Macro 2 (E), Encoder click (Studio unlock) */
-    &kp A &kp A &kp A &kp A &kp A &studio_unlock &kp H &kp E &kp A
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            bindings = < &kp A >;
         };
     };
 };
