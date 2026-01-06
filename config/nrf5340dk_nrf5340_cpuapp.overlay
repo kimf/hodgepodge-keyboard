@@ -86,8 +86,7 @@
         dc-gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
         reset-gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
 
-        /* --- HÄR ÄR UPPDATERINGEN --- */
-        /* Vi lägger till gctrl, vds, vrh m.fl för att göra kompilatorn nöjd */
+        /* --- DISPLAY INITIERING --- */
 
         mdac = <0x00>;
         colmod = <0x55>;
@@ -100,12 +99,15 @@
         ram-param = [00 F0];
         rgb-param = [CD 08 14];
 
-        /* De nya parametrarna som saknades: */
+        /* Ström och Gamma inställningar */
         gctrl = <0x35>;
         vcom = <0x19>;
         vds = <0x20>;
-        vrh = <0x12>;  /* VRH control */
-        vdv = <0x20>;  /* VDV control */
+        vrh = <0x12>;
+        vdv = <0x20>;
+
+        /* --- NY TILLAGD RAD: --- */
+        gamma = <0x01>; /* Gamma Curve 1 */
     };
 };
 
