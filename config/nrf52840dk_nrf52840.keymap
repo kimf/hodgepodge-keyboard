@@ -10,11 +10,11 @@
             bindings = <
     /* Placeholder bindings for unbuilt keys */
     &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A
-    &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp H
+    &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A
     &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A
 
     /* Macro 1 (H), Macro 2 (E), Encoder click (Studio unlock) */
-    &kp A &kp A &kp A &kp A &kp A &studio_unlock &kp E &kp A
+    &kp A &kp A &kp A &kp A &kp A &studio_unlock &kp H &kp E &kp A
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
