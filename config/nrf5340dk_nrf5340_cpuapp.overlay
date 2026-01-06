@@ -102,9 +102,6 @@
         /* Ström & Gamma */
         gctrl = <0x35>;
         vcom = <0x19>;
-        /* vds är borttagen! */
-        vrh = <0x12>;
-        vdv = <0x20>;
         gamma = <0x01>;
     };
 };
