@@ -108,7 +108,7 @@
         y-offset = <0>;
 
         cmd-data-gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
-        reset-gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+        reset-gpios = <&gpio0 14 GPIO_ACTIVE_HIGH>;
 
         mdac = <0x00>;
         colmod = <0x55>;
