@@ -18,4 +18,4 @@
 #     artifact-name: corne_left_with_studio
 
 include:
-  - board: nrf52840dk_nrf52840_cpuapp
+  - board: nrf52840dk_nrf52840
