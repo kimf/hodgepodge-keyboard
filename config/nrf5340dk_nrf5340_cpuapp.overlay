@@ -6,7 +6,7 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        zmk,display = &st7789; /* Denna rad aktiverar skärmen */
+        zmk,display = &st7789;
     };
 
     default_transform: keymap_transform_0 {
@@ -15,12 +15,12 @@
         rows = <4>;
 
         map = <
-        /* Rad 0-2 (Vanliga tangenter) */
+        /* Rad 0-2 */
         RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6) RC(0,7) RC(0,8) RC(0,9) RC(0,10)
         RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6) RC(1,7) RC(1,8) RC(1,9) RC(1,10)
         RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10)
 
-        /* Rad 3 (Tummarna + Dina 3 Makro-knappar) */
+        /* Rad 3 (Tummarna + Makro-knappar) */
         RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8)
         >;
     };
@@ -30,7 +30,6 @@
         label = "KSCAN";
         diode-direction = "col2row";
 
-        /* MATRIS PINS (Port 1) */
         row-gpios
             = <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
@@ -53,7 +52,6 @@
             ;
     };
 
-    /* ENCODER DEFINITION */
     left_encoder: encoder_left {
         compatible = "alps,ec11";
         label = "LEFT_ENCODER";
@@ -70,7 +68,6 @@
     };
 };
 
-/* SKÄRM KONFIGURATION (Uppdaterad med vcom inställningar) */
 &spi1 {
     compatible = "nordic,nrf-spim";
     status = "okay";
@@ -89,8 +86,9 @@
         dc-gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
         reset-gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
 
-        /* HÄR ÄR FIXEN FÖR FELET: Standard initiering för ST7789 */
-        vcom = <0x19>;
+        /* --- HÄR ÄR UPPDATERINGEN --- */
+        /* Vi lägger till gctrl, vds, vrh m.fl för att göra kompilatorn nöjd */
+
         mdac = <0x00>;
         colmod = <0x55>;
         lcm = <0x2c>;
@@ -101,10 +99,16 @@
         nvgam-param = [D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23];
         ram-param = [00 F0];
         rgb-param = [CD 08 14];
+
+        /* De nya parametrarna som saknades: */
+        gctrl = <0x35>;
+        vcom = <0x19>;
+        vds = <0x20>;
+        vrh = <0x12>;  /* VRH control */
+        vdv = <0x20>;  /* VDV control */
     };
 };
 
-/* PIN CONTROL FÖR SPI */
 &pinctrl {
     spi1_default: spi1_default {
         group1 {
