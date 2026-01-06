@@ -8,14 +8,13 @@
 
         default_layer {
             bindings = <
-    /* Rad 0-2 (Dessa finns inte fysiskt än, vi fyller med 'A') */
-    &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A
-    &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A
-    &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A
+    /* Placeholder bindings for unbuilt keys */
+    &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A
+    &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp H
+    &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A &kp A
 
-    /* RAD 3 - DINA TESTKNAPPAR */
-    /* Macro 1, Macro 2, Encoder Click, (Resten av tummarna är 'A') */
-    &kp H     &kp E     &kp L        &kp A &kp A &kp A &kp A &kp A &kp A
+    /* Macro 1 (H), Macro 2 (E), Encoder click (Studio unlock) */
+    &kp A &kp A &kp A &kp A &kp A &studio_unlock &kp E &kp A
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
