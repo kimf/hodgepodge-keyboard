@@ -70,13 +70,17 @@
         spi-max-frequency = <20000000>;
         reg = <0>;
 
-        /* Standardinställning för 1.54 tum fyrkantig */
         width = <240>;
         height = <240>;
         x-offset = <0>;
         y-offset = <0>;
 
-        /* Reset P1.10, DC P1.11 */
+        vcom = <0x19>;    /* VCOM Voltage Setting */
+        gatem = <0x07>;   /* Gate Control */
+        madctl = <0x00>;  /* Memory Data Access Control (Rotera bild) */
+        colmod = <0x55>;  /* Color Mode (16-bit color) */
+        /* ----------------------------- */
+
         reset-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
         cmd-data-gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
     };
