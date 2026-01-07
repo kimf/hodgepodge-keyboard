@@ -81,7 +81,6 @@
         gctrl = <0x35>;      /* Gate Control (Required) */
         vcom = <0x19>;       /* VCOM Voltage */
         vrhs = <0x12>;       /* VRH Set */
-        vdv = <0x20>;        /* VDV Set */
         lcm = <0x2c>;        /* LCM Control */
         mdac = <0x00>;       /* Memory Data Access Control (Rotation) */
         gamma = <0x01>;      /* Gamma Curve Select */
