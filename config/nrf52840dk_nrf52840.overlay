@@ -66,8 +66,8 @@
         compatible = "sitronix,st7789v";
         status = "okay";
         spi-max-frequency = <20000000>;
-        cpol; /* Clock Polarity */
-        cpha; /* Clock Phase */
+        spi-cpol; /* Clock Polarity */
+        spi-cpha; /* Clock Phase */
         reg = <0>;
 
         width = <240>;
