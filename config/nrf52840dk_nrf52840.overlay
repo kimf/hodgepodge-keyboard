@@ -94,17 +94,17 @@
     st7789: st7789v@0 {
         compatible = "sitronix,st7789v";
         status = "okay";
-        spi-max-frequency = <4000000>;
+        spi-max-frequency = <1000000>;
         reg = <0>;
 
         width = <240>;
         height = <240>;
-        x-offset = <80>;
-        y-offset = <0>;
+        x-offset = <0>;
+        y-offset = <80>;
 
         /* Reset and DC pins */
         reset-gpios = <&gpio1 10 GPIO_ACTIVE_LOW>;
-        cmd-data-gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
+        cmd-data-gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
 
         /* --- ST7789V Init Sequence --- */
         /* These properties match the Zephyr binding requirements */
