@@ -17,3 +17,7 @@ DC (Data/Cmd),P0.06       - Röd
 CS (Chip Select),P0.08    - Svart
 BLK (Backlight),P0.07     - Vit
 
+
+
+set up a custom binding so we can try SPI mode 3
+add a hard test screen (solid color) to remove LVGL from the equation.
