@@ -66,6 +66,8 @@
         compatible = "sitronix,st7789v";
         status = "okay";
         spi-max-frequency = <20000000>;
+        cpol; /* Clock Polarity */
+        cpha; /* Clock Phase */
         reg = <0>;
 
         width = <240>;
@@ -74,7 +76,7 @@
         y-offset = <0>;
 
         /* Reset and DC pins */
-        reset-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+        reset-gpios = <&gpio1 10 GPIO_ACTIVE_LOW>;
         cmd-data-gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
 
         /* --- ST7789V Init Sequence --- */
