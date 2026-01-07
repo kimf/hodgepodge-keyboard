@@ -1,17 +1,18 @@
-/* nrf52840dk_nrf52840.overlay - Minimal Dummy Config */
+/* nrf52840dk_nrf52840.overlay - Keys & Encoder Only */
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
+        /* Notera: Ingen zmk,display här! */
     };
 
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
-        columns = <1>;
+        columns = <3>;
         rows = <1>;
-        map = <RC(0,0)>;
+        map = <RC(0,0) RC(0,1) RC(0,2)>;
     };
 
     kscan0: kscan_0 {
@@ -19,8 +20,29 @@
         label = "KSCAN";
         diode-direction = "col2row";
 
-        /* En enda dummy-knapp på säkra pinnar (P1.03 och P1.04) */
+        /* RADEN: Koppla denna till P1.03 */
         row-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-        col-gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;
+
+        /* KOLUMNER: Koppla knapparna till P1.04, P1.05, P1.06 */
+        col-gpios
+            = <&gpio1 4 GPIO_ACTIVE_HIGH>
+            , <&gpio1 5 GPIO_ACTIVE_HIGH>
+            , <&gpio1 6 GPIO_ACTIVE_HIGH>;
+    };
+
+    left_encoder: encoder_left {
+        compatible = "alps,ec11";
+        label = "LEFT_ENCODER";
+        /* ENCODER: Pin A -> P1.01, Pin B -> P1.02 */
+        a-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+        status = "okay";
+    };
+
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
+        triggers-per-rotation = <20>;
     };
 };
