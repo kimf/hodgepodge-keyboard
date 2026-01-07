@@ -1,11 +1,12 @@
-/* nrf52840dk_nrf52840.overlay - Keys & Encoder Only */
+/* nrf52840dk_nrf52840.overlay */
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/pinctrl/nrf-pinctrl.h>
 
 / {
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        /* Notera: Ingen zmk,display här! */
+        zmk,display = &st7789; /* Peka ut skärmen här */
     };
 
     default_transform: keymap_transform_0 {
@@ -19,33 +20,64 @@
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
 
-        /* Din lödning (svart streck mot rad) kräver col2row */
+        /* Din lödning: Svart streck mot raden = col2row */
         diode-direction = "col2row";
 
-        /* RADEN: Mottagare. MÅSTE ha (GPIO_PULL_DOWN) för att inte "spöka" */
+        /* RADEN: Mottagare med Pull-Down */
         row-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 
-        /* KOLUMNER: Sändare. Behöver inget motstånd */
+        /* KOLUMNER: Sändare */
         col-gpios
             = <&gpio1 4 GPIO_ACTIVE_HIGH>
             , <&gpio1 5 GPIO_ACTIVE_HIGH>
             , <&gpio1 6 GPIO_ACTIVE_HIGH>;
     };
+};
 
-    left_encoder: encoder_left {
-        compatible = "alps,ec11";
-        label = "LEFT_ENCODER";
+/* --- SKÄRM-KONFIGURATION (Port 1) --- */
 
-        a-gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-
-        steps = <80>;
-        status = "okay";
+/* Definiera pinnarna för SPI-hårdvaran */
+&pinctrl {
+    spi1_default: spi1_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 1, 15)>,  /* P1.15 = CLK */
+                    <NRF_PSEL(SPIM_MOSI, 1, 13)>; /* P1.13 = SDA */
+        };
     };
 
-    sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder>;
-        triggers-per-rotation = <20>;
+    spi1_sleep: spi1_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 1, 15)>,
+                    <NRF_PSEL(SPIM_MOSI, 1, 13)>;
+            low-power-enable;
+        };
+    };
+};
+
+/* Aktivera SPI och lägg till skärmen */
+&spi1 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    pinctrl-0 = <&spi1_default>;
+    pinctrl-1 = <&spi1_sleep>;
+    pinctrl-names = "default", "sleep";
+
+    /* Chip Select (CS) på P1.12 */
+    cs-gpios = <&gpio1 12 GPIO_ACTIVE_LOW>;
+
+    st7789: st7789v@0 {
+        compatible = "sitronix,st7789v";
+        spi-max-frequency = <20000000>;
+        reg = <0>;
+
+        /* Standardinställning för 1.54 tum fyrkantig */
+        width = <240>;
+        height = <240>;
+        x-offset = <0>;
+        y-offset = <0>;
+
+        /* Reset P1.10, DC P1.11 */
+        reset-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+        cmd-data-gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
     };
 };
