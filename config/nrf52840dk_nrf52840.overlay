@@ -18,16 +18,18 @@
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
-        diode-direction = "row2col";
 
-        /* RADEN: Sändare (Output) */
-        row-gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
+        /* Din lödning (svart streck mot rad) kräver col2row */
+        diode-direction = "col2row";
 
-        /* KOLUMNER: Mottagare (Input) med Pull-Down */
+        /* RADEN: Mottagare. MÅSTE ha (GPIO_PULL_DOWN) för att inte "spöka" */
+        row-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+
+        /* KOLUMNER: Sändare. Behöver inget motstånd */
         col-gpios
-            = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio1 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio1 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+            = <&gpio1 4 GPIO_ACTIVE_HIGH>
+            , <&gpio1 5 GPIO_ACTIVE_HIGH>
+            , <&gpio1 6 GPIO_ACTIVE_HIGH>;
     };
 
     left_encoder: encoder_left {
