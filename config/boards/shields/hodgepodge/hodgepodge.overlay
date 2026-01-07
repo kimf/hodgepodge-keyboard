@@ -7,10 +7,8 @@
 	chosen {
 		zmk,kscan = &kscan0;
 		zmk,matrix_transform = &default_transform;
-		
 		zmk,display = &st7789;
 		zephyr,display = &st7789;
-		
 		zmk,backlight = &backlight;
 	};
 	
@@ -32,23 +30,13 @@
 		compatible = "zmk,kscan-gpio-matrix";
 		label = "KSCAN";
 		diode-direction = "col2row";
-		
-		/* ROW: Pull-Down */
 		row-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-		
-		/* COLUMNS: Active High */
 		col-gpios
 		= <&gpio1 4 GPIO_ACTIVE_HIGH>
 		, <&gpio1 5 GPIO_ACTIVE_HIGH>
 		, <&gpio1 6 GPIO_ACTIVE_HIGH>;
 	};
 };
-
-zephyr_udc0: &usbd {
-	status = "okay";
-};
-
-/* --- DISPLAY CONFIGURATION --- */
 
 &pinctrl {
 	spi1_default: spi1_default {
@@ -67,16 +55,11 @@ zephyr_udc0: &usbd {
 	};
 	
 	pwm0_default: pwm0_default {
-		group1 {
-			psels = <NRF_PSEL(PWM_OUT0, 0, 7)>;
-		};
+	group1 { psels = <NRF_PSEL(PWM_OUT0, 0, 7)>; };
 	};
 	
 	pwm0_sleep: pwm0_sleep {
-		group1 {
-			psels = <NRF_PSEL(PWM_OUT0, 0, 7)>;
-			low-power-enable;
-		};
+	group1 { psels = <NRF_PSEL(PWM_OUT0, 0, 7)>; low-power-enable; };
 	};
 };
 
@@ -105,27 +88,22 @@ zephyr_udc0: &usbd {
 		width = <240>;
 		height = <240>;
 		x-offset = <0>;
-		y-offset = <0>;
+		y-offset = <80>;
 		
 		reset-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
 		cmd-data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
 		
-		gctrl = <0x35>;      /* Gate Control (Required) */
-		vcom = <0x19>;       /* VCOM Voltage */
-		vrhs = <0x12>;       /* VRH Set */
-		vdvs = <0x20>;       /* VDV Set */
-		lcm = <0x2c>;        /* LCM Control */
-		mdac = <0x00>;       /* Memory Data Access Control (Rotation) */
-		gamma = <0x01>;      /* Gamma Curve Select */
-		colmod = <0x55>;     /* Color Mode (16-bit) */
+		/* --- OBLIGATORISKA (Vi behåller dessa!) --- */
+		gctrl = <0x35>;
+		vcom = <0x19>;
+		vrhs = <0x12>;
+		vdv = <0x20>;
+		lcm = <0x2c>;
+		mdac = <0x00>;
+		gamma = <0x01>;
+		colmod = <0x55>;
 		
-		porch-param = [0c 0c 00 33 33];
-		cmd2en-param = [5a 69 02 01];
-		pwctrl1-param = [a4 a1];
-		pvgam-param = [D0 04 0D 11 13 2B 3F 54 4C 18 0D 0B 1F 23];
-		nvgam-param = [D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23];
-		ram-param = [00 F0];
-		rgb-param = [CD 08 14];
+		/* --- FRIVILLIGA (Borttagna) --- */
+		/* porch-param, cmd2en-param osv är borta för att inte förvirra displayen */
 	};
-	
 };
