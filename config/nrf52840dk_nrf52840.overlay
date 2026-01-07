@@ -104,7 +104,7 @@
 
         /* Reset and DC pins */
         reset-gpios = <&gpio1 10 GPIO_ACTIVE_LOW>;
-        cmd-data-gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
+        cmd-data-gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
 
         /* --- ST7789V Init Sequence --- */
         /* These properties match the Zephyr binding requirements */
