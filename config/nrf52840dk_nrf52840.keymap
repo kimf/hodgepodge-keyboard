@@ -2,6 +2,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/backlight.h>
 
 / {
     keymap {
@@ -12,7 +13,7 @@
              * Knapp 2 (P1.05) -> B
              * Knapp 3 (P1.06) -> C
              */
-            bindings = < &kp A &kp B &kp C >;
+            bindings = < &bl BL_DEC &kp B &bl BL_INC >;
 
             /* Encodern styr volymen */
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
