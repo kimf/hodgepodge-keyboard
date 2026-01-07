@@ -1,3 +1,6 @@
 .DS_Store
 
 .zmk/
+zmk
+zephyr
+.west
