@@ -5,18 +5,18 @@
 #include <dt-bindings/zmk/backlight.h>
 
 / {
-    keymap {
-        compatible = "zmk,keymap";
-
-        default_layer {
-            /* * Knapp 1 (P1.04) -> A
-             * Knapp 2 (P1.05) -> B
-             * Knapp 3 (P1.06) -> C
-             */
-            bindings = < &bl BL_DEC &kp B &bl BL_INC >;
-
-            /* Encodern styr volymen */
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-        };
-    };
+	keymap {
+		compatible = "zmk,keymap";
+		
+		default_layer {
+			/* * Knapp 1 (P1.04) -> A
+			* Knapp 2 (P1.05) -> B
+			* Knapp 3 (P1.06) -> C
+			*/
+			bindings = < &bl BL_DEC &kp B &bl BL_INC >;
+			
+			/* Encodern styr volymen */
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+		};
+	};
 };
