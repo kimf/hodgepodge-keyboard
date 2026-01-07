@@ -7,6 +7,7 @@
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
         zmk,display = &st7789;
+        zephyr,display = &st7789;
     };
 
     default_transform: keymap_transform_0 {
@@ -63,6 +64,7 @@
 
     st7789: st7789v@0 {
         compatible = "sitronix,st7789v";
+        status = "okay";
         spi-max-frequency = <20000000>;
         reg = <0>;
 
