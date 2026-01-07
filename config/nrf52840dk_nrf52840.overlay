@@ -101,45 +101,27 @@
 		width = <240>;
 		height = <240>;
 		x-offset = <0>;
-		y-offset = <0>; /* Testa 0 först, vi fixar 80 sen om du ser bild */
+		y-offset = <0>;
 		
-		/* Reset & DC */
 		reset-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
 		cmd-data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
 		
-		/* TA BORT ALLA gctrl, vcom, params etc. */
-		/* Låt drivrutinen använda sina inbyggda defaults */
+		gctrl = <0x35>;      /* Gate Control (Required) */
+		vcom = <0x19>;       /* VCOM Voltage */
+		vrhs = <0x12>;       /* VRH Set */
+		vdvs = <0x20>;       /* VDV Set */
+		lcm = <0x2c>;        /* LCM Control */
+		mdac = <0x00>;       /* Memory Data Access Control (Rotation) */
+		gamma = <0x01>;      /* Gamma Curve Select */
+		colmod = <0x55>;     /* Color Mode (16-bit) */
+		
+		porch-param = [0c 0c 00 33 33];
+		cmd2en-param = [5a 69 02 01];
+		pwctrl1-param = [a4 a1];
+		pvgam-param = [D0 04 0D 11 13 2B 3F 54 4C 18 0D 0B 1F 23];
+		nvgam-param = [D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23];
+		ram-param = [00 F0];
+		rgb-param = [CD 08 14];
 	};
-	
-	
-	
-	//   st7789: st7789v@0 {
-	//   compatible = "sitronix,st7789v";
-	//   status = "okay";
-	//   spi-max-frequency = <4000000>;
-	//   reg = <0>;
-	// //   width = <240>;
-	//   height = <240>;
-	//   x-offset = <0>;
-	//   y-offset = <0>;
-	// //   reset-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
-	//   cmd-data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
-	// //   gctrl = <0x35>;      /* Gate Control (Required) */
-	//   vcom = <0x19>;       /* VCOM Voltage */
-	//   vrhs = <0x12>;       /* VRH Set */
-	//   vdvs = <0x20>;       /* VDV Set */
-	//   lcm = <0x2c>;        /* LCM Control */
-	//   mdac = <0x00>;       /* Memory Data Access Control (Rotation) */
-	//   gamma = <0x01>;      /* Gamma Curve Select */
-	//   colmod = <0x55>;     /* Color Mode (16-bit) */
-	// //   /* Advanced Parameters */
-	//   porch-param = [0c 0c 00 33 33];
-	//   cmd2en-param = [5a 69 02 01];
-	//   pwctrl1-param = [a4 a1];
-	//   pvgam-param = [D0 04 0D 11 13 2B 3F 54 4C 18 0D 0B 1F 23];
-	//   nvgam-param = [D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23];
-	//   ram-param = [00 F0];
-	//   rgb-param = [CD 08 14];
-	//   };
 	
 };
