@@ -8,7 +8,14 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            bindings = < &kp A >;
+            /* * Knapp 1 (P1.04) -> A
+             * Knapp 2 (P1.05) -> B
+             * Knapp 3 (P1.06) -> C
+             */
+            bindings = < &kp A &kp B &kp C >;
+
+            /* Encodern styr volymen */
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
