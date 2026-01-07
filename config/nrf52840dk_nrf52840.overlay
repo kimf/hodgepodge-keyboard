@@ -6,7 +6,7 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        zmk,display = &st7789; /* Peka ut skärmen här */
+        zmk,display = &st7789;
     };
 
     default_transform: keymap_transform_0 {
@@ -19,14 +19,12 @@
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
-
-        /* Din lödning: Svart streck mot raden = col2row */
         diode-direction = "col2row";
 
-        /* RADEN: Mottagare med Pull-Down */
+        /* ROW: Pull-Down */
         row-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 
-        /* KOLUMNER: Sändare */
+        /* COLUMNS: Active High */
         col-gpios
             = <&gpio1 4 GPIO_ACTIVE_HIGH>
             , <&gpio1 5 GPIO_ACTIVE_HIGH>
@@ -34,14 +32,13 @@
     };
 };
 
-/* --- SKÄRM-KONFIGURATION (Port 1) --- */
+/* --- DISPLAY CONFIGURATION --- */
 
-/* Definiera pinnarna för SPI-hårdvaran */
 &pinctrl {
     spi1_default: spi1_default {
         group1 {
             psels = <NRF_PSEL(SPIM_SCK, 1, 15)>,  /* P1.15 = CLK */
-                    <NRF_PSEL(SPIM_MOSI, 1, 13)>; /* P1.13 = SDA */
+                    <NRF_PSEL(SPIM_MOSI, 1, 13)>; /* P1.13 = SDA/MOSI */
         };
     };
 
@@ -54,7 +51,6 @@
     };
 };
 
-/* Aktivera SPI och lägg till skärmen */
 &spi1 {
     compatible = "nordic,nrf-spim";
     status = "okay";
@@ -62,7 +58,7 @@
     pinctrl-1 = <&spi1_sleep>;
     pinctrl-names = "default", "sleep";
 
-    /* Chip Select (CS) på P1.12 */
+    /* Chip Select (CS) on P1.12 */
     cs-gpios = <&gpio1 12 GPIO_ACTIVE_LOW>;
 
     st7789: st7789v@0 {
@@ -75,17 +71,23 @@
         x-offset = <0>;
         y-offset = <0>;
 
-        vcom = <0x19>;    /* VCOM Voltage Setting */
-        gatem = <0x07>;   /* Gate Control */
-        madctl = <0x00>;  /* Memory Data Access Control (Rotera bild) */
-        colmod = <0x55>;  /* Color Mode (16-bit color) */
-        gctrl = <0x35>;
-        vrhs = <0x12>;
-        vdv = <0x20>;
-        mdac = <0x00>;
-        lcm = <0x2c>;
-        colmod = <0x05>;
-        gamma = <0x01>;
+        /* Reset and DC pins */
+        reset-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+        cmd-data-gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
+
+        /* --- ST7789V Init Sequence --- */
+        /* These properties match the Zephyr binding requirements */
+
+        gctrl = <0x35>;      /* Gate Control (Required) */
+        vcom = <0x19>;       /* VCOM Voltage */
+        vrhs = <0x12>;       /* VRH Set */
+        vdv = <0x20>;        /* VDV Set */
+        lcm = <0x2c>;        /* LCM Control */
+        mdac = <0x00>;       /* Memory Data Access Control (Rotation) */
+        gamma = <0x01>;      /* Gamma Curve Select */
+        colmod = <0x55>;     /* Color Mode (16-bit) */
+
+        /* Advanced Parameters */
         porch-param = [0c 0c 00 33 33];
         cmd2en-param = [5a 69 02 01];
         pwctrl1-param = [a4 a1];
@@ -93,8 +95,5 @@
         nvgam-param = [D0 04 0C 11 13 2C 3F 44 51 2F 1F 1F 20 23];
         ram-param = [00 F0];
         rgb-param = [CD 08 14];
-
-        reset-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
-        cmd-data-gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
     };
 };
