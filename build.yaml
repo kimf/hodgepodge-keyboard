@@ -20,9 +20,6 @@
 include:
   - board: nrf52840dk_nrf52840
     shield: hodgepodge
-    snippet: zmk-usb-logging
-  - board: nrf52840dk_nrf52840
-    shield: hodgepodge
-    snippet: studio-rpc-usb-uart
+    snippet: studio-rpc-usb-uart, zmk-usb-logging
     cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: nrf52840dk_nrf52840_with_studio
+    artifact-name: hodgepodge_nrf52840
