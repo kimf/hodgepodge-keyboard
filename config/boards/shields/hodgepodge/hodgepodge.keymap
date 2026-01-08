@@ -33,11 +33,11 @@
 		
 		lower_layer {
 			display-name = "LOW";
-		}
+		};
 		
 		raise_layer {
 			display-name = "RAI";
-		}
+		};
 		
 		extra_1 {
 			status = "reserved";
