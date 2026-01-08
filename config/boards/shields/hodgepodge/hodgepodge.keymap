@@ -33,21 +33,43 @@
 		
 		lower_layer {
 			display-name = "LOW";
+			bindings = <
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none
+			>;
+			status = "reserved";
 		};
 		
 		raise_layer {
 			display-name = "RAI";
-		};
-		
-		extra_1 {
+			bindings = <
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none
+			>;
 			status = "reserved";
 		};
 		
-		extra_2 {
+		layer3 {
+			bindings = <
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none
+			>;
 			status = "reserved";
 		};
 		
-		extra_3 {
+		layer4 {
+			bindings = <
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none &none &none &none
+			&none &none &none &none &none &none &none &none &none
+			>;
 			status = "reserved";
 		};
 	};
