@@ -1,6 +1,6 @@
 if SHIELD_HODGEPODGE
 
 config ZMK_KEYBOARD_NAME
-    default "hodgepodge"
+    default "HodgePodge"
 
 endif

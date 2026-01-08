@@ -3,15 +3,6 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
-	behaviors {
-		yu_macro: yu_macro {
-			compatible = "zmk,behavior-macro";
-			label = "YU_MACRO";
-			#binding-cells = <0>;
-			bindings = <&studio_unlock>;
-		};
-	};
-	
 	keymap {
 		compatible = "zmk,keymap";
 		
