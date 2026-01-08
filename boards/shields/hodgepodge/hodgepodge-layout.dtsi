@@ -1,58 +1,52 @@
 #include <physical_layouts.dtsi>
 
 / {
-	hodgepodge_physical_layout: hodgepodge_physical_layout {
+	physical_layout_hodgepodge: physical_layout_hodgepodge {
 		compatible = "zmk,physical-layout";
-		display-name = "HodgePodge Layout";
-		transform = <&default_transform>;
-		kscan = <&kscan0>;
-		
-		keys//........                     w   h    x    y     rot    rx    ry
-		=             <&key_physical_attrs 100 100  493   59 (-200)  693  359>
-		,             <&key_physical_attrs 100 100  593   34 (-200)  693  334>
-		,             <&key_physical_attrs 100 100  717    0    200  817  300>
-		,             <&key_physical_attrs 100 100  790   37    600 1255  577>
-		,             <&key_physical_attrs 100 100  916   30    900  916  330>
-		,             <&key_physical_attrs 100 100 1014   71   1300 1014  371>
-		,             <&key_physical_attrs 100 100 1715   71 (-1300) 1815  371>
-		,             <&key_physical_attrs 100 100 1813   30 (-900) 1913  330>
-		,             <&key_physical_attrs 100 100 1939   37 (-600) 1574  577>
-		,             <&key_physical_attrs 100 100 2012    0 (-200) 2012  300>
-		,             <&key_physical_attrs 100 100 2136   34    200 2136  334>
-		,             <&key_physical_attrs 100 100 2236   59    200 2136  359>
-		,             <&key_physical_attrs 100 100    0  137    600 1255  577>
-		,             <&key_physical_attrs 100 100  265  159 (-200)  693  359>
-		,             <&key_physical_attrs 100 100  365  100    200  817  300>
-		,             <&key_physical_attrs 100 100  365  171 (-1300) 1815  371>
-		,             <&key_physical_attrs 100 100  365  130 (-900) 1913  330>
-		,             <&key_physical_attrs 100 100  365  134 (-200)  693  334>
-		,             <&key_physical_attrs 100 100  465  134    200 2136  334>
-		,             <&key_physical_attrs 100 100  465  130    900  916  330>
-		,             <&key_physical_attrs 100 100  465  171   1300 1014  371>
-		,             <&key_physical_attrs 100 100  465  100 (-200) 2012  300>
-		,             <&key_physical_attrs 100 100  565  159    200 2136  359>
-		,             <&key_physical_attrs 100 100  829  137 (-600) 1574  577>
-		,             <&key_physical_attrs 100 100    0  237    600 1255  577>
-		,             <&key_physical_attrs 100 100  265  259 (-200)  693  359>
-		,             <&key_physical_attrs 100 100  365  200    200  817  300>
-		,             <&key_physical_attrs 100 100  365  271 (-1300) 1815  371>
-		,             <&key_physical_attrs 100 100  365  230 (-900) 1913  330>
-		,             <&key_physical_attrs 100 100  365  234 (-200)  693  334>
-		,             <&key_physical_attrs 100 100  465  234    200 2136  334>
-		,             <&key_physical_attrs 100 100  465  230    900  916  330>
-		,             <&key_physical_attrs 100 100  465  271   1300 1014  371>
-		,             <&key_physical_attrs 100 100  465  200 (-200) 2012  300>
-		,             <&key_physical_attrs 100 100  565  259    200 2136  359>
-		,             <&key_physical_attrs 100 100  829  237 (-600) 1574  577>
-		,             <&key_physical_attrs 100 150  265  377 (-2700) 1950  553>
-		,             <&key_physical_attrs 100 100  365  453 (-1500) 1950  553>
-		,             <&key_physical_attrs 100 150  564  377   2700  879  553>
-		,             <&key_physical_attrs 100 100  879  453   1500  879  553>
-		,             <&key_physical_attrs 100 100 1072  387   3900  879  553>
-		,             <&key_physical_attrs 100 100 1375  339      0 1425  389>
-		,             <&key_physical_attrs 100 100 1172  112   3900  879  278>
-		,             <&key_physical_attrs 100 100 1590  371 (-1300) 1590  471>
-		,             <&key_physical_attrs 100 100 1658  387 (-3900) 1950  553>
+		display-name = "HodgePodge";
+		keys//                 w   h    x    y     rot    rx    ry
+		= <&key_physical_attrs 100 100    0   37       0     0     0>
+		, <&key_physical_attrs 100 100  100   37       0     0     0>
+		, <&key_physical_attrs 100 100  200   12       0     0     0>
+		, <&key_physical_attrs 100 100  300    0       0     0     0>
+		, <&key_physical_attrs 100 100  400   12       0     0     0>
+		, <&key_physical_attrs 100 100  500   24       0     0     0>
+		, <&key_physical_attrs 100 100  800   24       0     0     0>
+		, <&key_physical_attrs 100 100  900   12       0     0     0>
+		, <&key_physical_attrs 100 100 1000    0       0     0     0>
+		, <&key_physical_attrs 100 100 1100   12       0     0     0>
+		, <&key_physical_attrs 100 100 1200   37       0     0     0>
+		, <&key_physical_attrs 100 100 1300   37       0     0     0>
+		, <&key_physical_attrs 100 100    0  137       0     0     0>
+		, <&key_physical_attrs 100 100  100  137       0     0     0>
+		, <&key_physical_attrs 100 100  200  112       0     0     0>
+		, <&key_physical_attrs 100 100  300  100       0     0     0>
+		, <&key_physical_attrs 100 100  400  112       0     0     0>
+		, <&key_physical_attrs 100 100  500  124       0     0     0>
+		, <&key_physical_attrs 100 100  800  124       0     0     0>
+		, <&key_physical_attrs 100 100  900  112       0     0     0>
+		, <&key_physical_attrs 100 100 1000  100       0     0     0>
+		, <&key_physical_attrs 100 100 1100  112       0     0     0>
+		, <&key_physical_attrs 100 100 1200  137       0     0     0>
+		, <&key_physical_attrs 100 100 1300  137       0     0     0>
+		, <&key_physical_attrs 100 100    0  237       0     0     0>
+		, <&key_physical_attrs 100 100  100  237       0     0     0>
+		, <&key_physical_attrs 100 100  200  212       0     0     0>
+		, <&key_physical_attrs 100 100  300  200       0     0     0>
+		, <&key_physical_attrs 100 100  400  212       0     0     0>
+		, <&key_physical_attrs 100 100  500  224       0     0     0>
+		, <&key_physical_attrs 100 100  800  224       0     0     0>
+		, <&key_physical_attrs 100 100  900  212       0     0     0>
+		, <&key_physical_attrs 100 100 1000  200       0     0     0>
+		, <&key_physical_attrs 100 100 1100  212       0     0     0>
+		, <&key_physical_attrs 100 100 1200  237       0     0     0>
+		, <&key_physical_attrs 100 100 1300  237       0     0     0>
+		, <&key_physical_attrs 100 100  350  312       0     0     0>
+		, <&key_physical_attrs 100 150  450  312    1200   450   412>
+		, <&key_physical_attrs 100 100  523  333    2400   523   483>
+		, <&key_physical_attrs 100 100  777  333 (-2400)   877   483>
+		, <&key_physical_attrs 100 150  850  312 (-1200)   950   412>
+		, <&key_physical_attrs 100 100  950  312       0     0     0>
 		;
 	};
 };
