@@ -5,7 +5,9 @@
 		compatible = "zmk,physical-layout";
 		display-name = "HodgePodge Layout";
 		transform = <&default_transform>;
-		keys
+		kscan = <&kscan0>;
+		
+		keys//........                     w   h    x    y     rot    rx    ry
 		=             <&key_physical_attrs 100 100  493   59 (-200)  693  359>
 		,             <&key_physical_attrs 100 100  593   34 (-200)  693  334>
 		,             <&key_physical_attrs 100 100  717    0    200  817  300>
