@@ -7,6 +7,7 @@
 	chosen {
 		zmk,kscan = &kscan0;
 		zmk,matrix_transform = &default_transform;
+		zmk,kscan = &kscan0;
 		zmk,physical-layout = &hodgepodge_physical_layout;
 		// zmk,display = &st7789;
 		// zephyr,display = &st7789;
@@ -19,11 +20,6 @@
 	// 		pwms = <&pwm0 0 PWM_MSEC(10) PWM_POLARITY_NORMAL>;
 	// 	};
 	// };
-	
-	&hodgepodge_physical_layout {
-		kscan = <&kscan0>;// Label of the kscan node this layout uses
-		transform = <&default_transform>;// Label of the matrix transform this layout uses
-	};
 	
 	default_transform: keymap_transform_0 {
 		compatible = "zmk,matrix-transform";
