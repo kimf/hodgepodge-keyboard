@@ -6,8 +6,6 @@
 / {
 	chosen {
 		zmk,kscan = &kscan0;
-		zmk,matrix_transform = &default_transform;
-		zmk,kscan = &kscan0;
 		zmk,physical-layout = &hodgepodge_physical_layout;
 		// zmk,display = &st7789;
 		// zephyr,display = &st7789;
