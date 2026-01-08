@@ -1,16 +1,14 @@
 #include <dt-bindings/zmk/matrix_transform.h>
-#include "hodgepodge-layout.dtsi"
+#include "hodgepodge-layouts.dtsi"
 // #include <dt-bindings/pinctrl/nrf-pinctrl.h>
 // #include <dt-bindings/pwm/pwm.h>
 
 / {
-	chosen {
-		zmk,kscan = &kscan0;
-		zmk,physical-layout = &hodgepodge_physical_layout;
-		// zmk,display = &st7789;
-		// zephyr,display = &st7789;
-		// zmk,backlight = &backlight;
-	};
+	// chosen {
+	// 	zmk,display = &st7789;
+	// 	zephyr,display = &st7789;
+	// 	zmk,backlight = &backlight;
+	// };
 	
 	// backlight: pwmleds {
 	// 	compatible = "pwm-leds";
@@ -19,7 +17,7 @@
 	// 	};
 	// };
 	
-	default_transform: keymap_transform_0 {
+	matrix_transform0: matrix_transform0 {
 		compatible = "zmk,matrix-transform";
 		columns = <12>;
 		rows = <4>;
@@ -58,6 +56,12 @@
 		, <&gpio1 8 GPIO_ACTIVE_HIGH>;
 	};
 };
+
+&physical_layout_hodgepodge {
+	kscan = <&kscan0>;
+	transform = <&matrix_transform0>;
+};
+
 
 zephyr_udc0: &usbd {
 	status = "okay";
