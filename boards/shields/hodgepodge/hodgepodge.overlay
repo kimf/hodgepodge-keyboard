@@ -20,6 +20,11 @@
 	// 	};
 	// };
 	
+	&hodgepodge_physical_layout {
+		kscan = <&kscan0>;// Label of the kscan node this layout uses
+		transform = <&default_transform>;// Label of the matrix transform this layout uses
+	};
+	
 	default_transform: keymap_transform_0 {
 		compatible = "zmk,matrix-transform";
 		columns = <12>;
