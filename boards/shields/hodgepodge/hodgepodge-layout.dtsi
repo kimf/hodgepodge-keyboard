@@ -4,8 +4,6 @@
 	hodgepodge_physical_layout: hodgepodge_physical_layout {
 		compatible = "zmk,physical-layout";
 		display-name = "HodgePodge Layout";
-		transform = <&default_transform>;
-		kscan = <&kscan0>;
 		keys
 		=             <&key_physical_attrs 100 100  493   59 (-200)  693  359>
 		,             <&key_physical_attrs 100 100  593   34 (-200)  693  334>
