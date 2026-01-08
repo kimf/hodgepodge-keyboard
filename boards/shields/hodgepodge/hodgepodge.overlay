@@ -65,7 +65,7 @@
 
 zephyr_udc0: &usbd {
 	status = "okay";
-}
+};
 
 // Disable screen for now...
 // &pinctrl {
