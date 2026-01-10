@@ -17,7 +17,7 @@
 			label = "TD6";
 			#binding-cells = <0>;
 			tapping-term-ms = <200>;
-			bindings = <&kp NON_US_BSLASH &macro_9>;
+			bindings = <&kp NON_US_BSLH &macro_9>;
 		};
 		
 		td7: tap_dance_7 {
@@ -72,7 +72,7 @@
 			label = "M9";
 			compatible = "zmk,behavior-macro";
 			#binding-cells = <0>;
-			bindings = <&kp NON_US_BSLASH &kp KP_SLASH>;
+			bindings = <&kp NON_US_BSLH &kp KP_SLASH>;
 		};
 		
 		macro_10: macro_10 {
@@ -154,7 +154,7 @@
 			bindings = <
 			&trans &kp KP_1 &kp KP_2 &kp KP_3 &kp KP_4 &kp KP_5 &kp LS(N6) &kp LS(RBKT) &kp RA(N7) &kp RA(N4) &kp LS(N1) &kp DEL
 			&kp LCTRL &kp KP_6 &kp KP_7 &kp KP_8 &kp KP_9 &kp KP_0 &td7 &kp LS(N9) &td8 &kp LA(N9) &kp LS(N3) &kp LS(MINUS)
-			&kp LSHIFT &kp LS(N5) &kp KP_ASTERISK &kp KP_SLASH &kp KP_PLUS &kp KP_EQUAL &td9 &kp LS(LA(N9)) &td6 &kp LS(NON_US_BSLASH) &kp SLASH &kp LS(N2)
+			&kp LSHIFT &kp LS(N5) &kp KP_ASTERISK &kp KP_SLASH &kp KP_PLUS &kp KP_EQUAL &td9 &kp LS(LA(N9)) &td6 &kp LS(NON_US_BSLH) &kp SLASH &kp LS(N2)
 			&trans &lt 3 SPACE &trans &trans &lt 3 SPACE &trans
 			>;
 		};
@@ -169,7 +169,7 @@
 			bindings = <
 			&trans &none &kp KP_7 &kp KP_8 &kp KP_9 &none &td10 &kp BSLH &kp LS(N2) &kp RA(N4) &none &none
 			&trans &kp KP_0 &kp KP_4 &kp KP_5 &kp KP_6 &kp LS(N5) &kp LS(N3) &kp KP_SLASH &kp KP_ASTERISK &kp KP_EQUAL &kp KP_PLUS &kp LS(MINUS)
-			&trans &kp KP_0 &kp KP_1 &kp KP_2 &kp KP_3 &kp RA(N2) &td5 &kp LS(N5) &td6 &kp LS(NON_US_BSLASH) &kp SLASH &kp LS(GRAVE)
+			&trans &kp KP_0 &kp KP_1 &kp KP_2 &kp KP_3 &kp RA(N2) &td5 &kp LS(N5) &td6 &kp LS(NON_US_BSLH) &kp SLASH &kp LS(GRAVE)
 			&trans &lt 3 SPACE &trans &trans &lt 3 SPACE &trans
 			>;
 		};
