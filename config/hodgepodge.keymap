@@ -2,6 +2,23 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+#ifndef KP_1
+#define KP_0 0x62
+#define KP_1 0x59
+#define KP_2 0x5A
+#define KP_3 0x5B
+#define KP_4 0x5C
+#define KP_5 0x5D
+#define KP_6 0x5E
+#define KP_7 0x5F
+#define KP_8 0x60
+#define KP_9 0x61
+#define KP_SLASH 0x54
+#define KP_ASTERISK 0x55
+#define KP_PLUS 0x57
+#define KP_EQUAL 0x67
+#endif
+
 / {
 	behaviors {
 		td5: tap_dance_5 {
