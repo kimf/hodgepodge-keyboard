@@ -63,12 +63,12 @@ Col 7  - Orange - P1.03
 
 ## Left half pins
 
-Col 1 - Purple - P0.03
-Col 2 - Green  - P0.04
-Col 3 - Brown  - P0.28
-Col 4 - Yellow - P0.29
-Col 5 - Blue   - P0.30
-Col 6 - Orange - P0.31
+Col 1 - Purple - P0.00
+Col 2 - Green  - P0.01
+Col 3 - Brown  - P0.05
+Col 4 - Yellow - P0.06
+Col 5 - Blue   - P0.07
+Col 6 - Orange - P0.08
 
 ---;
 
