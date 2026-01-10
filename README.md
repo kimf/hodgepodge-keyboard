@@ -68,7 +68,7 @@ Col 2 - Green  - P0.04
 Col 3 - Brown  - P0.28
 Col 4 - Yellow - P0.29
 Col 5 - Blue   - P0.30
-Col 6 - Orange - P0.31 (Thumb got purple accidentally)
+Col 6 - Orange - P0.31
 
 ---;
 
