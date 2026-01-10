@@ -129,38 +129,58 @@
 	keymap {
 		compatible = "zmk,keymap";
 		
+		// -----------------------------------------------------------------------------------------
+		// | ESC   |  Q   |  W   |  E   |  R   |  T   |   |  Y   |  U   |  I   |  O   |  P  | BSPC |
+		// | TAB   |  A   |  S   |  D   |  F   |  G   |   |  H   |  J   |  K   |  L   |  Ö 	| Ä  |
+		// | SHIFT |  Z   |  X   |  C   |  V   |  B   |   |  N   |  M   | , 	 | .  	| - 	| ' |
+		//                    | CMD | SPACE (LOWER) | ALT |   | CTRL | SPACE (RAISE)  | ENTER |
 		default_layer {
 			display-name = "Base";
 			bindings = <
 			&mt (LCTRL | LGUI) ESC  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp BSPC
 			&kp TAB                 &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI &kp SQT
 			&kp LSHIFT              &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp SLASH &kp BSLH
-			&kp LALT &kp LGUI &lt 1 SPACE &lt 2 SPACE &mt RSHIFT RET &kp RCTRL
+			&kp LGUI &lt 1 SPACE &kp LALT &kp LCTRL &lt 2 SPACE RET
 			>;
 		};
 		
+		// -----------------------------------------------------------------------------------------
+		// | ESC   |  1   |  2   |  3   |  4   |  5   |   |  &   |  ^   |  {   |  $   |  !   | DEL  |
+		// | CTRL  |  6   |  7   |  8   |  9   |  0   |   |  (   |  )   |  [   |  ]   |  #   |  ?   |
+		// | SHIFT |  %   |  *   |  /   |  +   |  =   |   |  {   |  }   |  <   |  >   |  -   |  "   |
+		//                    | CMD | SPACE(HELD) | ALT |   | CTRL | SPACE (MEDIA) | ENTER |
 		lower_layer {
 			display-name = "NumSym";
 			bindings = <
 			&trans &kp KP_1 &kp KP_2 &kp KP_3 &kp KP_4 &kp KP_5 &kp LS(N6) &kp LS(RBKT) &kp RA(N7) &kp RA(N4) &kp LS(N1) &kp DEL
 			&kp LCTRL &kp KP_6 &kp KP_7 &kp KP_8 &kp KP_9 &kp KP_0 &td7 &kp LS(N9) &td8 &kp LA(N9) &kp LS(N3) &kp LS(MINUS)
 			&kp LSHIFT &kp LS(N5) &kp KP_ASTERISK &kp KP_SLASH &kp KP_PLUS &kp KP_EQUAL &td9 &kp LS(LA(N9)) &td6 &kp LS(NON_US_BSLASH) &kp SLASH &kp LS(N2)
-			&trans &none &lt 3 SPACE &lt 3 SPACE &trans &trans
+			&trans &lt 3 SPACE &trans &trans &lt 3 SPACE &trans
 			>;
 		};
 		
+		// -----------------------------------------------------------------------------------------
+		// | ESC   |  NO  |  7   |  8   |  9   |  NO  |   |  *   |  '   |  "   |  $   |  NO  |  NO  |
+		// | TAB   |  0   |  4   |  5   |  6   |  %   |   |  #   |  /   |  *   |  =   |  +   |  ?   |
+		// | SHIFT |  0   |  1   |  2   |  3   |  @   |   |  ~   |  %   |  <   |  >   |  -   |  ½   |
+		//                    | CMD | SPACE (MEDIA) | ALT |   | CTRL | SPACE(HELD) | ENTER |
 		raise_layer {
-			display-name = "Media";
+			display-name = "Numpad";
 			bindings = <
 			&trans &none &kp KP_7 &kp KP_8 &kp KP_9 &none &td10 &kp BSLH &kp LS(N2) &kp RA(N4) &none &none
 			&trans &kp KP_0 &kp KP_4 &kp KP_5 &kp KP_6 &kp LS(N5) &kp LS(N3) &kp KP_SLASH &kp KP_ASTERISK &kp KP_EQUAL &kp KP_PLUS &kp LS(MINUS)
 			&trans &kp KP_0 &kp KP_1 &kp KP_2 &kp KP_3 &kp RA(N2) &td5 &kp LS(N5) &td6 &kp LS(NON_US_BSLASH) &kp SLASH &kp LS(GRAVE)
-			&trans &trans &lt 3 SPACE &lt 3 SPACE &trans &trans
+			&trans &lt 3 SPACE &trans &trans &lt 3 SPACE &trans
 			>;
 		};
 		
+		// -----------------------------------------------------------------------------------------
+		// | ESC   |  NO  |  NO  |  NO  |  NO  |  NO  |   | PREV | PLAY | NEXT | MUTE | VOL- | VOL+ |
+		// | TAB   |  NO  | CTRL | CMD  | ALT  |  NO  |   | LEFT |  UP  | DOWN | RIGHT |  NO  |  NO  |
+		// | SHIFT |  NO  |  NO  |  NO  |  NO  | CAPS |   | SPACE | LEFT |  NO  | RIGHT |  NO  |  NO  |
+		//                    | CMD | NO | NO |   | NO | NO | ENTER |
 		layer3 {
-			display-name = "Layer 3";
+			display-name = "Media";
 			bindings = <
 			&trans &none &none &none &none &none &kp C_PREV &kp C_PLAY &kp C_NEXT &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP
 			&trans &none &kp LCTRL &kp LGUI &kp LALT &none &kp LEFT &kp UP &kp DOWN &kp RIGHT &none &none
@@ -168,17 +188,5 @@
 			&trans &none &none &none &none &trans
 			>;
 		};
-		
-		
-		
-		// original_layer {
-		// 	display-name = "Original";
-		// 	bindings = <
-		// 	&kp ESC  &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y    &kp U  &kp I      &kp O    &kp P     &kp BSPC
-		// 	&kp TAB  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H    &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-		// 	&kp LEFT_SHIFT  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N    &kp M  &kp COMMA  &kp DOT  &kp SLASH  &kp SINGLE_QUOTE
-		// 	&kp LEFT_COMMAND &kp SPACE &kp LEFT_ALT &kp LCTRL &kp SPACE &kp RET
-		// 	>;
-		// };
 	};
 };
