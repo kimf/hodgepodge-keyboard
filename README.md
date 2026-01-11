@@ -70,6 +70,15 @@ Col 4 - Yellow - P0.29
 Col 5 - Blue   - P0.30
 Col 6 - Orange - P0.31
 
+
+## Macro pins
+
+Row - Green - P1.10
+
+Left - Orange - Col 12 - P1.03
+Middle - Blue/yellow - Col 11 - P1.04
+Right - Purple - Col 10 - P1.05
+
 ---;
 
 ## Notes

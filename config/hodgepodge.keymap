@@ -158,6 +158,7 @@
 			&kp TAB                 &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI &kp SQT
 			&kp LSHIFT              &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp SLASH &kp BSLH
 			&kp LGUI &lt 1 SPACE &kp LALT &kp LCTRL &lt 2 SPACE &kp RET
+			&trans &kp C_PP &trans
 			>;
 		};
 		
@@ -173,6 +174,7 @@
 			&kp LCTRL &kp KP_6 &kp KP_7 &kp KP_8 &kp KP_9 &kp KP_0 &td7 &kp LS(N9) &td8 &kp LA(N9) &kp LS(N3) &kp LS(MINUS)
 			&kp LSHIFT &kp LS(N5) &kp KP_ASTERISK &kp KP_SLASH &kp KP_PLUS &kp KP_EQUAL &td9 &kp LS(LA(N9)) &td6 &kp LS(NON_US_BSLH) &kp SLASH &kp LS(N2)
 			&trans &lt 3 SPACE &trans &trans &lt 3 SPACE &trans
+			&none  &none  &none
 			>;
 		};
 		
@@ -188,6 +190,7 @@
 			&trans &kp KP_0 &kp KP_4 &kp KP_5 &kp KP_6 &kp LS(N5) &kp LS(N3) &kp KP_SLASH &kp KP_ASTERISK &kp KP_EQUAL &kp KP_PLUS &kp LS(MINUS)
 			&trans &kp KP_0 &kp KP_1 &kp KP_2 &kp KP_3 &kp RA(N2) &td5 &kp LS(N5) &td6 &kp LS(NON_US_BSLH) &kp SLASH &kp LS(GRAVE)
 			&trans &lt 3 SPACE &trans &trans &lt 3 SPACE &trans
+			&none  &none  &none
 			>;
 		};
 		
@@ -203,6 +206,7 @@
 			&trans &none &kp LCTRL &kp LGUI &kp LALT &none &kp LEFT &kp UP &kp DOWN &kp RIGHT &none &none
 			&trans &none &none &none &none &kp CAPS &kp SPACE &kp LEFT &none &kp RIGHT &none &none
 			&trans &none &none &none &none &trans
+			&none  &none  &none
 			>;
 		};
 	};
